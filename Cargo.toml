@@ -1,0 +1,23 @@
+[package]
+name = "simple_rusty_tile_server"
+version = "0.1.0"
+authors = ["Stuart Lynn <stuart.lynn@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket  = "^0.4"
+postgres = "^0.15"
+postgis = "^0.6.0"
+diesel = "^1.4.3"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+
+
+[dependencies.rocket_contrib]
+version = "0.4.2"
+default-features = false
+features = ["diesel_postgres_pool","serve","json"]
+

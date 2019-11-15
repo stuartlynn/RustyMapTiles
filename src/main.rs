@@ -25,8 +25,8 @@ use diesel::sql_query;
 
 #[derive(QueryableByName, PartialEq, Debug)]
 struct Tile {
-  // #[sql_type = "Integer"]
-  // id: i32,
+  #[sql_type = "Integer"]
+  id: i32,
   #[sql_type = "Bytea"]
   mvt: Vec<u8>,
 }
@@ -48,7 +48,7 @@ struct DbConn(diesel::pg::PgConnection);
 
 
 #[get("/<tile_type>/<z>/<x>/<y>")]
-fn tile(conn: CensusDbConn, tile_type: String, z: u32, x: u32, y: u32) -> Vec<u8> {
+fn tile(conn: DbConn, tile_type: String, z: u32, x: u32, y: u32) -> Vec<u8> {
   println!("Getting tile {} {} {}", z, x, y);
   let tile_box = bbox(x, y, z);
   println!(

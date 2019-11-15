@@ -96,6 +96,6 @@ fn main() {
   rocket::ignite()
     .attach(DbConn::fairing())
     .mount("/", routes![ tile])
-    .mount("/public", StaticFiles::from("./public"))
+    .mount("/", StaticFiles::from("./public"))
     .launch();
 }
